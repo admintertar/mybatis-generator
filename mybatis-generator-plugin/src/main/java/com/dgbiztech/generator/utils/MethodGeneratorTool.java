@@ -29,8 +29,6 @@ public class MethodGeneratorTool {
      * @param visibility     the visibility
      * @param returnJavaType the return java type
      * @param parameters     the parameters
-     * @author HuWeihui
-     * @since hui_project v1
      */
     public static Method methodGenerator(String methodName,
                                          JavaVisibility visibility,
@@ -51,8 +49,6 @@ public class MethodGeneratorTool {
      *
      * @param introspectedTable the introspected table
      * @return the set
-     * @author HuWeihui
-     * @since hui_project v1
      */
     public static Set<FullyQualifiedJavaType> importedBaseTypesGenerator(IntrospectedTable introspectedTable){
         //获取实体类类型
@@ -78,8 +74,6 @@ public class MethodGeneratorTool {
      * @param interfaze         the interfaze
      * @param introspectedTable the introspected table
      * @param context           the context
-     * @author HuWeihui
-     * @since hui_project v1
      */
     public static void defaultBatchInsertOrUpdateMethodGen(Integer type , Interface interfaze, IntrospectedTable introspectedTable, Context context){
         //JAVA导入基础包
@@ -112,8 +106,6 @@ public class MethodGeneratorTool {
      * @param interfaze         the interfaze
      * @param introspectedTable the introspected table
      * @param context           the context
-     * @author HuWeihui
-     * @since hui_project v1
      */
     public static void defaultBatchDeleteMethodGen(Interface interfaze,IntrospectedTable introspectedTable, Context context){
         //JAVA导入基础包
