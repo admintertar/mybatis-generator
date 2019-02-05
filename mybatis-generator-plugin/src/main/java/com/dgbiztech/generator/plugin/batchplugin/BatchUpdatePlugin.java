@@ -1,4 +1,4 @@
-package com.dgbiztech.generator.plugin;
+package com.dgbiztech.generator.plugin.batchplugin;
 
 import com.dgbiztech.generator.utils.MethodGeneratorTool;
 import com.dgbiztech.generator.utils.SqlMapperGeneratorTool;
