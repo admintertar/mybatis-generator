@@ -29,11 +29,11 @@ public class CommentGenerator extends EmptyCommentGenerator {
     public void addModelClassComment(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         String author = properties.getProperty("author");
         String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
-        String baseModel = properties.getProperty("baseModel","false");
+        String baseModel = properties.getProperty("interface","false");
         if (baseModel.equals("true")){
-            String baseClass = properties.getProperty("baseClass","x");
+            String baseClass = properties.getProperty("classpath","x");
             if (baseClass.equals("x")){
-                throw new RuntimeException("baseClass路径不存在!");
+                throw new RuntimeException("classpath路径不存在!");
             }
             topLevelClass.addImportedType(baseClass);
             topLevelClass.addSuperInterface(new FullyQualifiedJavaType(baseClass.substring(baseClass.lastIndexOf(".")+1,baseClass.length())));

@@ -1,16 +1,19 @@
 package com.dgbiztech.generator.plugin;
 
 import com.dgbiztech.generator.utils.SqlMapperGeneratorTool;
+import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
+import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class BatchGroupPlugin extends PluginAdapter {
 
@@ -23,6 +26,25 @@ public class BatchGroupPlugin extends PluginAdapter {
     @Override
     public boolean validate(List<String> warnings) {
         return true;
+    }
+
+    @Override
+    public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String isGenericDao = properties.getProperty("GenericDao", "false");
+        if (isGenericDao.equals("true")){
+            String modelName = introspectedTable.getBaseRecordType();
+            FullyQualifiedJavaType genericDao = new FullyQualifiedJavaType("GenericDao<"+modelName+",String>");
+            interfaze.addSuperInterface(genericDao);
+            interfaze.addImportedType(new FullyQualifiedJavaType("com.dgbiztech.core.mybatis.GenericDao"));
+        }
+        return super.clientGenerated(interfaze, topLevelClass, introspectedTable);
+    }
+
+    @Override
+    public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
+        List<GeneratedJavaFile> mapperJavaFiles = new ArrayList<GeneratedJavaFile>();
+
+        return mapperJavaFiles;
     }
 
     @Override

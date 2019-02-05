@@ -21,16 +21,22 @@
         <!--<plugin type="com.dgbiztech.generator.plugin.batchplugin.BatchInsertPlugin"/>-->
         <!--<plugin type="com.dgbiztech.generator.plugin.batchplugin.BatchDeletePlugin"/>-->
 
-        <plugin type="com.dgbiztech.generator.plugin.BatchGroupPlugin"/>
-        <plugin type="com.dgbiztech.generator.plugin.GetPagePlugin"/>
+        <!-- 批量 增删改 -->
+        <plugin type="com.dgbiztech.generator.plugin.BatchGroupPlugin">
+            <!-- 是否给生成的接口增加 GenericDao  -->
+            <property name="GenericDao" value="true"></property>
+        </plugin>
+
+        <!-- getPage方法 -->
+        <!--<plugin type="com.dgbiztech.generator.plugin.GetPagePlugin"/>-->
 
 
         <!-- 自定义注释生成器 -->
         <commentGenerator type="com.dgbiztech.generator.plugin.comment.CommentGenerator">
             <property name="author" value="Hongping.Zhong"></property>
             <property name="dateFormat" value="yyyy年MM月dd日 HH:mm:ss"></property>
-            <property name="baseModel" value="true"></property>
-            <property name="baseClass" value="com.dgbiztech.core.dto.ICriteria"></property>
+            <property name="interface" value="true"></property>
+            <property name="classpath" value="com.dgbiztech.core.dto.ICriteria"></property>
         </commentGenerator>
 
         <!--数据库连接信息 -->
