@@ -17,10 +17,10 @@ templateConfig:
 
 
   # Service层
-#  - template: java/service.vm
-#    destDir: src/main/java
-#    destPackage: ${basePackage}.service
-#    destFileName: ${entityName}Service.java
+  - template: java/service.vm
+    destDir: src/main/java
+    destPackage: ${basePackage}.service
+    destFileName: ${entityName}Service.java
 
 #  # REST-ful Controller
 #  - template: java/restController.vm

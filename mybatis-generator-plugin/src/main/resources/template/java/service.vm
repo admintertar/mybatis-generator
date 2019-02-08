@@ -1,6 +1,10 @@
 package $!destPackage;
 
+import com.dgbiztech.erp.service.GenericServiceImpl;
+import com.alibaba.dubbo.config.annotation.Service;
+import ${table.modelPackge}.${table.entityName};
 
-public class ${table.entityName}Service{
+@Service
+public class ${table.entityName}Service extends GenericServiceImpl<${table.entityName}, String> implements I${table.entityName}Service{
 
 }

@@ -26,15 +26,20 @@ public class Table extends ConfigMatcher {
     public final String mapperPackage;
     public final String mapperName;
     public final String mapperLowerCamel;
+    public final String modelPackge;
     public List<Column> columns = new ArrayList<>();
     Logger log = LoggerFactory.getLogger(Table.class);
 
 
     public Table(Context context, IntrospectedTable introspectedTable, Map<String, String> parent) {
         super(introspectedTable.getRemarks(), parent);
+        log.info(">>>>>> begin initialize table configuration");
+
         actualName = introspectedTable.getFullyQualifiedTable().getIntrospectedTableName();
 
-        entityPackage = introspectedTable.getFullyQualifiedTable().getDomainObjectSubPackage();
+        modelPackge = context.getJavaModelGeneratorConfiguration().getTargetPackage();
+
+        entityPackage = introspectedTable.getIbatis2SqlMapPackage();
         entityName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
         entityLowerCamel = Utils.getLowerCamelCase(entityName);
 
@@ -44,11 +49,16 @@ public class Table extends ConfigMatcher {
         mapperPackage = introspectedTable.getFullyQualifiedTable().getDomainObjectSubPackage();
         mapperName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
         mapperLowerCamel = Utils.getLowerCamelCase(mapperName);
+
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
             columns.add(new Column(context, introspectedTable, introspectedColumn, this));
         }
+        log.info("<<<<<< initialized table configuration\n");
     }
 
+    public String getModelPackge() {
+        return modelPackge;
+    }
 
     public Logger getLog() {
         return log;
@@ -100,5 +110,22 @@ public class Table extends ConfigMatcher {
 
     public void setLog(Logger log) {
         this.log = log;
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "actualName='" + actualName + '\'' +
+                ", entityPackage='" + entityPackage + '\'' +
+                ", entityName='" + entityName + '\'' +
+                ", entityLowerCamel='" + entityLowerCamel + '\'' +
+                ", exampleName='" + exampleName + '\'' +
+                ", exampleLowerCamel='" + exampleLowerCamel + '\'' +
+                ", mapperPackage='" + mapperPackage + '\'' +
+                ", mapperName='" + mapperName + '\'' +
+                ", mapperLowerCamel='" + mapperLowerCamel + '\'' +
+                ", modelPackge='" + modelPackge + '\'' +
+                ", columns=" + columns +
+                '}';
     }
 }

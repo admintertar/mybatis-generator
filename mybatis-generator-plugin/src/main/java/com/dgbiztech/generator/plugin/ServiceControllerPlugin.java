@@ -39,6 +39,9 @@ public class ServiceControllerPlugin extends PluginAdapter {
         }
         //封装表数据
         Table table = new Table(context, introspectedTable, map);
+
+        System.out.println(table);
+
         //初始化context
         VelocityContext templateContext = new VelocityContext();
         templateContext.put("table", table);
