@@ -27,7 +27,10 @@
             <property name="GenericDao" value="true"></property>
         </plugin>
 
-        <plugin type="com.dgbiztech.generator.plugin.ServiceControllerPlugin"/>
+        <plugin type="com.dgbiztech.generator.plugin.ServiceControllerPlugin">
+            <property name="projectDir" value="/Users/ping/repo/repo-git/mybatis-generator/mybatis-generator"></property>
+            <property name="basePackage" value="com.dgbiztech"></property>
+        </plugin>
 
         <!-- getPage方法 -->
         <!--<plugin type="com.dgbiztech.generator.plugin.GetPagePlugin"/>-->
