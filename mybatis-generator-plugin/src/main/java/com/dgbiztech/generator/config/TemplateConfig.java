@@ -22,6 +22,11 @@ public class TemplateConfig {
      */
     private String destFileName;
 
+    /**
+     * 是否外部配置
+     */
+    private boolean isFile = false;
+
     public String getTemplate() {
         return template;
     }
@@ -52,5 +57,13 @@ public class TemplateConfig {
 
     public void setDestFileName(String destFileName) {
         this.destFileName = destFileName;
+    }
+
+    public boolean isFile() {
+        return isFile;
+    }
+
+    public void setFile(boolean file) {
+        isFile = file;
     }
 }

@@ -1,0 +1,20 @@
+package $!destPackage;
+
+import com.dgbiztech.erp.service.GenericServiceImpl;
+import ${table.mapperPackage}.${table.entityName}Mapper;
+import com.alibaba.dubbo.config.annotation.Service;
+import javax.annotation.Resource;
+import ${table.modelPackge}.${table.entityName};
+
+@Service
+public class ${table.entityName}Service extends GenericServiceImpl<${table.entityName}, String> implements I${table.entityName}Service{
+
+    @Resource
+    private ${table.entityName}Mapper mapper;
+
+    @Override
+    public GenericDao<${table.entityName}, String> getDao() {
+        return mapper;
+    }
+
+}

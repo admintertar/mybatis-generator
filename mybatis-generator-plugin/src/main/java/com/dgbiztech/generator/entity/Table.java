@@ -34,7 +34,6 @@ public class Table extends ConfigMatcher {
 
     public Table(Context context, IntrospectedTable introspectedTable, Map<String, String> parent) {
         super(introspectedTable.getRemarks(), parent);
-        log.info(">>>>>> begin initialize table configuration");
 
         actualName = introspectedTable.getFullyQualifiedTable().getIntrospectedTableName();
 
@@ -54,7 +53,6 @@ public class Table extends ConfigMatcher {
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
             columns.add(new Column(context, introspectedTable, introspectedColumn, this));
         }
-        log.info("<<<<<< initialized table configuration\n");
     }
 
     public String getModelPackge() {

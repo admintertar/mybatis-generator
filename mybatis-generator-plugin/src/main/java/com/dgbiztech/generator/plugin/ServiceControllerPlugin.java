@@ -7,6 +7,7 @@ import com.dgbiztech.generator.utils.FileUtil;
 import com.dgbiztech.generator.utils.Utils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
@@ -22,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.zip.InflaterInputStream;
 
 public class ServiceControllerPlugin extends PluginAdapter {
 
@@ -29,6 +31,11 @@ public class ServiceControllerPlugin extends PluginAdapter {
     private String basePackage = "com.dgbiztech";
 
     Logger log = LoggerFactory.getLogger(ServiceControllerPlugin.class);
+
+    public ServiceControllerPlugin(){
+        projectDir = properties.getProperty("projectDir",System.getProperty("user.dir"));
+        basePackage = properties.getProperty("basePackage","com.dgbiztech");
+    }
 
     @Override
     public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
@@ -40,31 +47,45 @@ public class ServiceControllerPlugin extends PluginAdapter {
         //封装表数据
         Table table = new Table(context, introspectedTable, map);
 
-        System.out.println(table);
-
         //初始化context
         VelocityContext templateContext = new VelocityContext();
         templateContext.put("table", table);
-
-        //读取配置文件
-        InputStream resourceAsStream = this.getClass().getResourceAsStream("/config.yml");
+        log.info("配置文件目录："+System.getProperty("user.dir"));
+        InputStream resourceAsStream = null;
+        //读取配置文件,如果不存在外部配置文件,那么就使用内部默认配置文件
+        try {
+            resourceAsStream = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/config.yml");
+        } catch (FileNotFoundException e) {
+            log.info("不存在外部config.yml,将使用默认config.yml");
+        }
+        if (resourceAsStream == null){
+            resourceAsStream = this.getClass().getResourceAsStream("/config.yml");
+        }
         List<TemplateConfig> configs = new Yaml().loadAs(resourceAsStream, ConfigWrapper.class).getTemplateConfig();
 
         int i = 0;
         for (TemplateConfig config : configs) {
-            String filepath = config.getDestPackage()
+            String tempFilePath = System.getProperty("user.dir")+"/src/main/resources/"+config.getTemplate();
+            File file = new File(tempFilePath);
+            //如果存在外部模版文件，那么就使用外部模版文件
+            if (file.exists()){
+                config.setTemplate(tempFilePath);
+                config.setFile(true);
+            }else{
+                log.info("不存在外部模版文件："+config.getTemplate()+",使用默认模版文件。");
+            }
+            String destPackage = config.getDestPackage()
                     .replace("${basePackage}",basePackage)
                     .replace("${entityName}",table.entityName.toLowerCase());
-            i++;
-            //当前包名
-            templateContext.put("destPackage",filepath);
+            //当前文件包名
+            templateContext.put("destPackage",destPackage);
             //循环第一个配置的时候就是service接口
-            if (i==1){
-                table.setInterfacServicePackge(filepath);
+            if (i==0){
+                table.setInterfacServicePackge(destPackage);
             }
-
+            i++;
             //组装模版
-            String content = renderTemplateAsString(config.getTemplate(), templateContext);
+            String content = renderTemplateAsString(config, templateContext);
             //拼装路径
             String absPath = this.filePath(config,table);
             //写入文件
@@ -105,16 +126,26 @@ public class ServiceControllerPlugin extends PluginAdapter {
 
     /**
      * 写入模版文件
-     * @param templateFile
+     * @param template
      * @param ctx
      * @return
      */
-    public String renderTemplateAsString(String templateFile, VelocityContext ctx) {
+    public String renderTemplateAsString(TemplateConfig template, VelocityContext ctx) {
         VelocityEngine ve = new VelocityEngine();
-        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-        ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-        ve.init();
-        Template t = ve.getTemplate("template/" + templateFile, "UTF-8");
+        Template t = null;
+        if (template.isFile()){
+            //文件加载方式
+            ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, template.getTemplate().substring(0,template.getTemplate().lastIndexOf("/")+1));
+            ve.init();
+            t = ve.getTemplate(template.getTemplate().substring(template.getTemplate().lastIndexOf("/")+1,template.getTemplate().length()), "UTF-8");
+        }else{
+            //类路径加载
+            ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+            ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+            ve.init();
+            t = ve.getTemplate("template/" + template.getTemplate(), "UTF-8");
+        }
+
         StringWriter sw = new StringWriter();
         t.merge(ctx, sw);
         return sw.toString();

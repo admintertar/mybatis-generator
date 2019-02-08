@@ -49,10 +49,8 @@ public class ConfigMatcher extends HashMap<String, String> {
             String[] params = value.split(",");
             for (String param : params) {
                 putIfAbsent(key + "." + param, "");
-                log.info("find config: {}.{} \t-> {}", key, param, "\"\"");
             }
             putIfAbsent(key, value);
-            log.info("find config: {} \t\t-> {}", key, value);
         }
     }
 
