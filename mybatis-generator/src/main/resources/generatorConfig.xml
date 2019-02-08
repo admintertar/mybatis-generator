@@ -71,7 +71,7 @@
         </javaClientGenerator>
 
 
-        <table tableName="user_login" domainObjectName="UserLogin4" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        <table tableName="user_login" domainObjectName="UserLogin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
             <property name="rootClass" value="com.dgbiztech.core.dto.BaseModel"/>
         </table>
 

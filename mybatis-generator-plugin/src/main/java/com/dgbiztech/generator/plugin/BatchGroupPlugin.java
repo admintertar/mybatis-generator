@@ -1,10 +1,7 @@
 package com.dgbiztech.generator.plugin;
 
 import com.dgbiztech.generator.utils.SqlMapperGeneratorTool;
-import org.mybatis.generator.api.GeneratedJavaFile;
-import org.mybatis.generator.api.IntrospectedColumn;
-import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.PluginAdapter;
+import org.mybatis.generator.api.*;
 import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.TextElement;
@@ -40,12 +37,31 @@ public class BatchGroupPlugin extends PluginAdapter {
         return super.clientGenerated(interfaze, topLevelClass, introspectedTable);
     }
 
-    @Override
-    public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
-        List<GeneratedJavaFile> mapperJavaFiles = new ArrayList<GeneratedJavaFile>();
-
-        return mapperJavaFiles;
-    }
+//    @Override
+//    public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
+//        JavaFormatter javaFormatter = context.getJavaFormatter();
+//
+//        List<GeneratedJavaFile> mapperJavaFiles = new ArrayList<GeneratedJavaFile>();
+//
+//        Interface mapperInterface = new Interface("com.dgbiztech.erp.service.IAbcService");
+//
+//        mapperInterface.setVisibility(JavaVisibility.PUBLIC);
+//        mapperInterface.addJavaDocLine("/**");
+//        mapperInterface.addJavaDocLine(" * 由MyBatis Generator工具自动生成，请不要手动修改");
+//        mapperInterface.addJavaDocLine(" */");
+//
+//        FullyQualifiedJavaType daoSuperType = new FullyQualifiedJavaType("com.dgbiztech.erp.service");
+//        // 添加泛型支持
+////        daoSuperType.addTypeArgument(baseModelJavaType);
+////        mapperInterface.addImportedType(baseModelJavaType);
+//        mapperInterface.addImportedType(daoSuperType);
+//        mapperInterface.addSuperInterface(daoSuperType);
+//
+//        GeneratedJavaFile mapperJavafile = new GeneratedJavaFile(mapperInterface, "com.dgbiztech.erp.service", javaFormatter);
+//        mapperJavaFiles.add(mapperJavafile);
+//
+//        return mapperJavaFiles;
+//    }
 
     @Override
     public boolean sqlMapDocumentGenerated(Document document, IntrospectedTable introspectedTable) {
