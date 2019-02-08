@@ -1,4 +1,4 @@
-package com.dgbiztech.generator.plugin.config;
+package com.dgbiztech.generator.config;
 
 public class TemplateConfig {
 
