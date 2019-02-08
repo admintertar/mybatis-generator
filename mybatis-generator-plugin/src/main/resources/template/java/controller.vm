@@ -1,8 +1,22 @@
-package $!table.get("basePackage") .controller;
+package $!destPackage;
 
+import ${table.modelPackge}.${table.entityName};
+import ${table.interfacServicePackge}.I${table.entityName}Service;
+import com.alibaba.dubbo.config.annotation.Reference;
+import org.apache.log4j.Logger;
 
-public class ${table.entityName}Controller{
+@Controller
+@RequestMapping("/${table.entityName}")
+public class ${table.entityName}Controller extends AbstractController<${table.entityName}, ${table.entityName}>{
 
+    private static final Logger log = Logger.getLogger(${table.entityName}Controller.class);
 
+    @Reference
+    private I${table.entityName}Service service;
+
+    @Override
+    public GenericService<${table.entityName}, String> getService() {
+        return service;
+    }
 
 }

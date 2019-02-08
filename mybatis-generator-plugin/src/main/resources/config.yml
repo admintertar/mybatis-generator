@@ -19,14 +19,14 @@ templateConfig:
   # Service层
   - template: java/service.vm
     destDir: src/main/java
-    destPackage: ${basePackage}.service
+    destPackage: ${basePackage}.erp.service.impl.${entityName}
     destFileName: ${entityName}Service.java
 
-#  # REST-ful Controller
-#  - template: java/restController.vm
-#    destDir: src/main/java
-#    destPackage: ${basePackage}.controller
-#    destFileName: ${entityName}RestController.java
+  # REST-ful Controller
+  - template: java/controller.vm
+    destDir: src/main/java
+    destPackage: com.shushang.erp.controller.${entityName}
+    destFileName: ${entityName}Controller.java
 
 #  # 生成html表单
 #  - template: html/form.vm

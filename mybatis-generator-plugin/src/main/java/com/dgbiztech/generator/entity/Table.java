@@ -27,6 +27,7 @@ public class Table extends ConfigMatcher {
     public final String mapperName;
     public final String mapperLowerCamel;
     public final String modelPackge;
+    public String interfacServicePackge;
     public List<Column> columns = new ArrayList<>();
     Logger log = LoggerFactory.getLogger(Table.class);
 
@@ -46,7 +47,7 @@ public class Table extends ConfigMatcher {
         exampleName = introspectedTable.getExampleType();
         exampleLowerCamel = Utils.getLowerCamelCase(exampleName);
 
-        mapperPackage = introspectedTable.getFullyQualifiedTable().getDomainObjectSubPackage();
+        mapperPackage = introspectedTable.getIbatis2SqlMapPackage();
         mapperName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
         mapperLowerCamel = Utils.getLowerCamelCase(mapperName);
 
@@ -110,6 +111,14 @@ public class Table extends ConfigMatcher {
 
     public void setLog(Logger log) {
         this.log = log;
+    }
+
+    public String getInterfacServicePackge() {
+        return interfacServicePackge;
+    }
+
+    public void setInterfacServicePackge(String interfacServicePackge) {
+        this.interfacServicePackge = interfacServicePackge;
     }
 
     @Override

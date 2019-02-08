@@ -50,11 +50,18 @@ public class ServiceControllerPlugin extends PluginAdapter {
         InputStream resourceAsStream = this.getClass().getResourceAsStream("/config.yml");
         List<TemplateConfig> configs = new Yaml().loadAs(resourceAsStream, ConfigWrapper.class).getTemplateConfig();
 
+        int i = 0;
         for (TemplateConfig config : configs) {
-            //当前包名
-            templateContext.put("destPackage",config.getDestPackage()
+            String filepath = config.getDestPackage()
                     .replace("${basePackage}",basePackage)
-                    .replace("${entityName}",table.entityName.toLowerCase()));
+                    .replace("${entityName}",table.entityName.toLowerCase());
+            i++;
+            //当前包名
+            templateContext.put("destPackage",filepath);
+            //循环第一个配置的时候就是service接口
+            if (i==1){
+                table.setInterfacServicePackge(filepath);
+            }
 
             //组装模版
             String content = renderTemplateAsString(config.getTemplate(), templateContext);
