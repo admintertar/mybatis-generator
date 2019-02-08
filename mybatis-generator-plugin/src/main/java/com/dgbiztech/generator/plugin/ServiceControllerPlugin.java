@@ -65,7 +65,7 @@ public class ServiceControllerPlugin extends PluginAdapter {
 
         int i = 0;
         for (TemplateConfig config : configs) {
-            String tempFilePath = System.getProperty("user.dir")+"/src/main/resources/"+config.getTemplate();
+            String tempFilePath = System.getProperty("user.dir")+"/src/main/resources/template/"+config.getTemplate();
             File file = new File(tempFilePath);
             //如果存在外部模版文件，那么就使用外部模版文件
             if (file.exists()){

@@ -2,6 +2,7 @@ package $!destPackage;
 
 import ${table.modelPackge}.${table.entityName};
 import ${table.interfacServicePackge}.I${table.entityName}Service;
+import com.dgbiztech.core.service.GenericService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
