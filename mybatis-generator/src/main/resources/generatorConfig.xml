@@ -22,10 +22,12 @@
         <!--<plugin type="com.dgbiztech.generator.plugin.batchplugin.BatchDeletePlugin"/>-->
 
         <!-- 批量 增删改 -->
-        <plugin type="com.dgbiztech.generator.plugin.BatchGroupPlugin">
-            <!-- 是否给生成的接口增加 GenericDao  -->
-            <property name="GenericDao" value="true"></property>
-        </plugin>
+        <!--<plugin type="com.dgbiztech.generator.plugin.BatchGroupPlugin">-->
+            <!--&lt;!&ndash; 是否给生成的接口增加 GenericDao  &ndash;&gt;-->
+            <!--<property name="GenericDao" value="true"></property>-->
+        <!--</plugin>-->
+
+        <plugin type="com.dgbiztech.generator.plugin.ServiceControllerPlugin"/>
 
         <!-- getPage方法 -->
         <!--<plugin type="com.dgbiztech.generator.plugin.GetPagePlugin"/>-->

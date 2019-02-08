@@ -1,0 +1,9 @@
+package $!destPackage;
+
+import com.dgbiztech.core.service.GenericService;
+import $!table.entityPackage;
+${table.entityName}
+
+public interface I${table.entityName}Service extends GenericService<${table.entityName},String> {
+
+}

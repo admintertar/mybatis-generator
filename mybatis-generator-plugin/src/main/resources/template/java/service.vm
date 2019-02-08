@@ -1,0 +1,6 @@
+package $!destPackage;
+
+
+public class ${table.entityName}Service{
+
+}
