@@ -1,0 +1,34 @@
+import listModel from '../constructor/list'
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
+
+const namespace = '${table.entityName.toLowerCase()}'
+const getPage = ${table.entityName.toLowerCase()}Service.getPage
+
+export default listModel({
+    // 上面三个是一定要的，一个主键去获取
+    namespace,
+    primaryKey: 'orderId',
+    getPage,
+    state: {
+        columns: [
+            {title:'单据编号',key:'orderCode',show:true,display:'sn'},
+            {title:'审核状态',key:'statusName',show:true,display:'enum'},
+            {title:'是否中心站',key:'isCenterSite',show:true,display:'sn'},
+            {title:'创建人',key:'createdPerson',show:true,display:'sn'},
+            {title:'创建时间',key:'createdDate',show:true,display:'datetime'},
+            {title:'审核人',key:'confrimPerson',show:false,display:'sn'},
+            {title:'审核时间',key:'confirmDate',show:true,display:'datetime'},
+            {title:'调整人',key:'adjustBy',show:false,display:'sn'},
+            {title:'调整时间',key:'adjustDate',show:true,display:'datetime'},
+            {title:'备注',key:'comments',show:true,display:'sn'},
+        ],
+        // 高级查询的时候的条件过滤
+        filters: {
+        },
+    },
+
+    effects: {
+    },
+    reducers: {
+    },
+})

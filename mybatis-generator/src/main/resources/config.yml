@@ -28,11 +28,11 @@ templateConfig:
     destPackage: com.shushang.erp.controller.${entityName}
     destFileName: ${entityName}Controller.java
 
-#  # 生成html表单
-#  - template: html/form.vm
-#    destDir: src/main/resources
-#    destPackage: templates
-#    destFileName: form.html
+  # 生成model.js
+  - template: js/models/model.vm
+    destDir: src/main/resources
+    destPackage: react
+    destFileName: ${entityName}.js
 #
 #  # 生成html列表
 #  - template: html/list.vm
