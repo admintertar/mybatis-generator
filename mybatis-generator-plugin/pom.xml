@@ -19,7 +19,6 @@
         <velocity.version>1.7</velocity.version>
         <fx-gson.version>3.1.0</fx-gson.version>
         <mybatis.version>3.4.6</mybatis.version>
-
     </properties>
 
     <dependencies>
@@ -41,17 +40,17 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hildan.fxgson/fx-gson -->
+        <dependency>
+            <groupId>org.hildan.fxgson</groupId>
+            <artifactId>fx-gson</artifactId>
+            <version>${fx-gson.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
         <dependency>
@@ -59,24 +58,11 @@
             <artifactId>velocity</artifactId>
             <version>${velocity.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hildan.fxgson/fx-gson -->
-        <dependency>
-            <groupId>org.hildan.fxgson</groupId>
-            <artifactId>fx-gson</artifactId>
-            <version>${fx-gson.version}</version>
-        </dependency>
         <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
