@@ -1,0 +1,13 @@
+import Utils from "../utils";
+
+const { request, config } = Utils;
+const { apiPrefix } = config;
+
+// 获取分页列表
+export async function getPage (params) {
+    return request({
+        url: `${apiPrefix}/${table.entityName.toLowerCase()}/getPage`,
+        method: 'post',
+        data: params,
+    })
+}

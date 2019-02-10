@@ -5,13 +5,6 @@ import org.hildan.fxgson.FxGsonBuilder;
 
 import java.io.*;
 
-/**
- * Created By spawpaw@hotmail.com 2018.1.20
- * Description:
- * 文件操作的工具类
- *
- * @author BenBenShang spawpaw@hotmail.com
- */
 public class FileUtil {
     public static String readFileAsStr(String path) {
         return readFileAsStr(new File(path));

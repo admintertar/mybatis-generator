@@ -15,7 +15,6 @@ templateConfig:
     destPackage: ${basePackage}.erp.api.service.${entityName}
     destFileName: I${entityName}Service.java
 
-
   # Service层
   - template: java/service.vm
     destDir: src/main/java
@@ -28,14 +27,14 @@ templateConfig:
     destPackage: com.shushang.erp.controller.${entityName}
     destFileName: ${entityName}Controller.java
 
-  # 生成model.js
-  - template: js/models/model.vm
+  # 生成models/index.js
+  - template: js/models/index.vm
     destDir: src/main/resources
-    destPackage: react
+    destPackage: react/models
+    destFileName: index.js
+
+  # 生成service.js
+  - template: js/service/service.vm
+    destDir: src/main/resources
+    destPackage: react/service
     destFileName: ${entityName}.js
-#
-#  # 生成html列表
-#  - template: html/list.vm
-#    destDir: src/main/resources
-#    destPackage: templates
-#    destFileName: list.html

@@ -1,0 +1,27 @@
+import listModel from '../constructor/list'
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
+
+const namespace = '${table.entityName.toLowerCase()}'
+const getPage = ${table.entityName.toLowerCase()}Service.getPage
+
+export default listModel({
+    // 上面三个是一定要的，一个主键去获取
+    namespace,
+    primaryKey: 'orderId',
+    getPage,
+    state: {
+        columns: [
+        #foreach($column in $table.columns)
+        {title:${column.remarks},key:${column.fieldName},show:true},
+        #end
+        ],
+        // 高级查询的时候的条件过滤
+        filters: {
+        },
+    },
+
+    effects: {
+    },
+    reducers: {
+    },
+})

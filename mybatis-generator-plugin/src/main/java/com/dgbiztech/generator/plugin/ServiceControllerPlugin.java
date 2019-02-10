@@ -4,10 +4,8 @@ import com.dgbiztech.generator.config.TemplateConfig;
 import com.dgbiztech.generator.entity.ConfigWrapper;
 import com.dgbiztech.generator.entity.Table;
 import com.dgbiztech.generator.utils.FileUtil;
-import com.dgbiztech.generator.utils.Utils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
@@ -120,6 +118,10 @@ public class ServiceControllerPlugin extends PluginAdapter {
         absPath = absPath.replace("${basePackage}", basePackage.replace(".", "/"));
         absPath = absPath.toLowerCase() + destFileName;
         absPath = absPath.replace("${entityName}", table.getEntityName());
+        //针对js文件做小写处理
+        if (absPath.indexOf(".js")>0){
+            absPath = absPath.toLowerCase();
+        }
         log.info("文件路径："+absPath);
         return absPath;
     }
