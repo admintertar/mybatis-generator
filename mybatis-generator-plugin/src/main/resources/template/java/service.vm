@@ -13,7 +13,7 @@ import ${table.modelPackge}.${table.entityName};
  * @ClassName ${table.entityName}Service
  * @Description ${table.remarks}
  * @Author $!table.get("author")
- * @Date $!table.get("dateFormat")
+ * @Date $!table.get("date")
  * @version 1.0.0
  */
 @Service

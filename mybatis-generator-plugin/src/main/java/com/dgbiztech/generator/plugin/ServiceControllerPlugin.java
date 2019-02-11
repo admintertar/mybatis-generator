@@ -43,7 +43,7 @@ public class ServiceControllerPlugin extends PluginAdapter {
         //日期格式处理
         String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
         SimpleDateFormat dateFormatter = new SimpleDateFormat(dateFormat);
-        map.put("dateFormat",dateFormatter.format(new Date()));
+        map.put("date",dateFormatter.format(new Date()));
 
         //封装表数据
         Table table = new Table(context, introspectedTable, map);
