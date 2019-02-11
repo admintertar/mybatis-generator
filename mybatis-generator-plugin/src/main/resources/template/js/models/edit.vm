@@ -1,0 +1,24 @@
+import formModel from '../constructor/form'
+import Utils from 'utils'
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
+
+export default formModel({
+    primaryKey:'$!table.get("primaryKey")',
+    namespace: '${table.entityName.toLowerCase()}Edit',
+    state:{
+        collapse:[
+            {key:'base',label:'基本信息',defaultActive:true},
+        ]
+    },
+    effects: {
+        *getBaseData({payload}, {call, put, select}){
+            const infoRes = yield ${table.entityName.toLowerCase()}Service.getInfo(payload);
+            if (!infoRes.hasError) {
+                yield put({
+                    type: 'setFormData',
+                    payload: infoRes.dto
+                })
+            }
+        },
+    }
+})

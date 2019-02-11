@@ -33,6 +33,24 @@ templateConfig:
     destPackage: react/models
     destFileName: index.js
 
+  # 生成models/edit.js
+  - template: js/models/edit.vm
+    destDir: src/main/resources
+    destPackage: react/models
+    destFileName: edit.js
+
+  # 生成models/detail.js
+  - template: js/models/detail.vm
+    destDir: src/main/resources
+    destPackage: react/models
+    destFileName: detail.js
+
+  # 生成models/add.js
+  - template: js/models/add.vm
+    destDir: src/main/resources
+    destPackage: react/models
+    destFileName: add.js
+
   # 生成service.js
   - template: js/service/service.vm
     destDir: src/main/resources
