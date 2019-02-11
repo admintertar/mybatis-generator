@@ -1,5 +1,6 @@
 package com.dgbiztech.generator.entity;
 
+import com.dgbiztech.generator.utils.VelocityInfoUtils;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.config.Context;
@@ -37,12 +38,14 @@ public class Table extends HashMap<String, String> {
         mapperName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
 
         remarks = introspectedTable.getRemarks();
+        //主键处理
+        VelocityInfoUtils.primaryKey(introspectedTable.getAllColumns().get(1),this);
 
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
             columns.add(new Column(context, introspectedTable, introspectedColumn, this));
         }
         //外部参数添加到table
-        putAll(parent);
+        this.putAll(parent);
     }
 
     public String getModelPackge() {

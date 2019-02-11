@@ -7,7 +7,7 @@ const getPage = ${table.entityName.toLowerCase()}Service.getPage
 export default listModel({
     // 上面三个是一定要的，一个主键去获取
     namespace,
-    primaryKey: 'orderId',
+    primaryKey: '$!table.get("primaryKey")',
     getPage,
     state: {
         columns: [

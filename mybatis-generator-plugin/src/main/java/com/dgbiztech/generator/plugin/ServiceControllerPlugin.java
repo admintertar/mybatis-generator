@@ -4,6 +4,7 @@ import com.dgbiztech.generator.config.TemplateConfig;
 import com.dgbiztech.generator.entity.ConfigWrapper;
 import com.dgbiztech.generator.entity.Table;
 import com.dgbiztech.generator.utils.FileUtil;
+import com.dgbiztech.generator.utils.VelocityInfoUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,9 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.zip.InflaterInputStream;
 
 public class ServiceControllerPlugin extends PluginAdapter {
 
@@ -40,13 +39,9 @@ public class ServiceControllerPlugin extends PluginAdapter {
         for (Object o : properties.keySet()) {
             map.put(o.toString(), properties.getProperty(o.toString()));
         }
-        //日期格式处理
-        String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
-        SimpleDateFormat dateFormatter = new SimpleDateFormat(dateFormat);
-        map.put("date",dateFormatter.format(new Date()));
-
         //封装表数据
         Table table = new Table(context, introspectedTable, map);
+        VelocityInfoUtils.data(properties, table);
 
         //初始化context
         VelocityContext templateContext = new VelocityContext();
