@@ -31,6 +31,8 @@
         <plugin type="com.dgbiztech.generator.plugin.ServiceControllerPlugin">
             <property name="projectDir" value="/Users/ping/repo/repo-git/mybatis-generator/mybatis-generator"></property>
             <property name="basePackage" value="com.dgbiztech"></property>
+            <property name="author" value="Hongping.Zhong"></property>
+            <property name="dateFormat" value="yyyy年MM月dd日 HH:mm:ss"></property>
         </plugin>
 
         <!-- getPage方法 -->

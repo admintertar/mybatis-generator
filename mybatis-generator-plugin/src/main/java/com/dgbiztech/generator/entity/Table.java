@@ -5,10 +5,11 @@ import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.config.Context;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Table {
+public class Table extends HashMap<String, String> {
 
     public final String actualName;
     public final String entityPackage;
@@ -18,6 +19,7 @@ public class Table {
     public final String mapperName;
     public final String modelPackge;
     public String interfacServicePackge;
+    public final String remarks;//该表注释
     public List<Column> columns = new ArrayList<>();
 
     public Table(Context context, IntrospectedTable introspectedTable, Map<String, String> parent) {
@@ -34,9 +36,13 @@ public class Table {
         mapperPackage = introspectedTable.getIbatis2SqlMapPackage();
         mapperName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
 
+        remarks = introspectedTable.getRemarks();
+
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
             columns.add(new Column(context, introspectedTable, introspectedColumn, this));
         }
+        //外部参数添加到table
+        putAll(parent);
     }
 
     public String getModelPackge() {
@@ -81,5 +87,14 @@ public class Table {
 
     public void setInterfacServicePackge(String interfacServicePackge) {
         this.interfacServicePackge = interfacServicePackge;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    @Override
+    public String get(Object key) {
+        return super.get(key);
     }
 }

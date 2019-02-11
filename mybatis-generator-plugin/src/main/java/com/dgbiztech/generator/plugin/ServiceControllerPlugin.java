@@ -17,10 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.zip.InflaterInputStream;
 
 public class ServiceControllerPlugin extends PluginAdapter {
@@ -42,6 +40,11 @@ public class ServiceControllerPlugin extends PluginAdapter {
         for (Object o : properties.keySet()) {
             map.put(o.toString(), properties.getProperty(o.toString()));
         }
+        //日期格式处理
+        String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat(dateFormat);
+        map.put("dateFormat",dateFormatter.format(new Date()));
+
         //封装表数据
         Table table = new Table(context, introspectedTable, map);
 

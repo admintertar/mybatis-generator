@@ -8,6 +8,15 @@ import com.alibaba.dubbo.config.annotation.Service;
 import javax.annotation.Resource;
 import ${table.modelPackge}.${table.entityName};
 
+
+/*
+ *
+ * @ClassName ${table.entityName}Service
+ * @Description ${table.remarks}
+ * @Author $!table.get("author")
+ * @Date $!table.get("dateFormat")
+ * @version 1.0.0
+ */
 @Service
 public class ${table.entityName}Service extends GenericServiceImpl<${table.entityName}, String> implements I${table.entityName}Service{
 
