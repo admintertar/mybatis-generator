@@ -29,21 +29,26 @@
 
         <!-- 生成controller service 层 -->
         <plugin type="com.dgbiztech.generator.plugin.ServiceControllerPlugin">
+            <!-- 项目根目录 -->
             <property name="projectDir" value="/Users/ping/repo/repo-git/mybatis-generator/mybatis-generator"></property>
+            <!-- 根包名 -->
             <property name="basePackage" value="com.dgbiztech"></property>
+            <!-- 创建人 -->
             <property name="author" value="Hongping.Zhong"></property>
+            <!-- 创建日期格式 -->
             <property name="dateFormat" value="yyyy年MM月dd日 HH:mm:ss"></property>
         </plugin>
 
         <!-- getPage方法 -->
-        <!--<plugin type="com.dgbiztech.generator.plugin.GetPagePlugin"/>-->
-
+        <plugin type="com.dgbiztech.generator.plugin.GetPagePlugin"/>
 
         <!-- 自定义注释生成器 -->
         <commentGenerator type="com.dgbiztech.generator.plugin.comment.CommentGenerator">
             <property name="author" value="Hongping.Zhong"></property>
             <property name="dateFormat" value="yyyy年MM月dd日 HH:mm:ss"></property>
+            <!-- 是否添加接口 -->
             <property name="interface" value="true"></property>
+            <!-- 接口路径 -->
             <property name="classpath" value="com.dgbiztech.core.dto.ICriteria"></property>
         </commentGenerator>
 
@@ -80,6 +85,7 @@
 
 
         <table tableName="user_log" domainObjectName="UserVer" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+            <!-- 添加rootClass -->
             <property name="rootClass" value="com.dgbiztech.core.dto.BaseModel"/>
         </table>
 
