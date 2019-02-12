@@ -12,7 +12,7 @@ export default listModel({
     state: {
         columns: [
         #foreach($column in $table.columns)
-        {title:${column.remarks},key:${column.fieldName},show:true,display:'${column.display}'},
+        {title:'${column.remarks}',key:'${column.fieldName}',show:true,display:'${column.display}'},
         #end
         ],
         // 高级查询的时候的条件过滤
