@@ -39,7 +39,7 @@ public class Table extends HashMap<String, String> {
 
         remarks = introspectedTable.getRemarks();
         //主键处理
-        VelocityInfoUtils.primaryKey(introspectedTable.getAllColumns().get(1),this);
+        VelocityInfoUtils.primaryKey(introspectedTable.getAllColumns().get(0),this);
 
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
             columns.add(new Column(context, introspectedTable, introspectedColumn, this));
