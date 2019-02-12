@@ -22,7 +22,7 @@ import java.util.*;
 
 public class ServiceControllerPlugin extends PluginAdapter {
 
-    private String projectDir = "/Users/ping/repo/repo-git/mybatis-generator/mybatis-generator";
+    private String projectDir = "";
     private String basePackage = "com.dgbiztech";
 
     Logger log = LoggerFactory.getLogger(ServiceControllerPlugin.class);

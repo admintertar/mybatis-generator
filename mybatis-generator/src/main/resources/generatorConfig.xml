@@ -5,7 +5,8 @@
 
     <!--数据库驱动包路径 -->
     <!--<classPathEntry location="/Users/ping/repo/repo-mvn/com/oracle/ojdbc6/11.2.0.3/ojdbc6-11.2.0.3.jar" />-->
-    <classPathEntry location="/Users/ping/repo/repo-mvn/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar" />
+    <!--<classPathEntry location="/Users/ping/repo/repo-mvn/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar" />-->
+    <classPathEntry location="D:/repo/com/oracle/ojdbc6/11.2.0.3/ojdbc6-11.2.0.3.jar" />
 
 
     <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple">
@@ -29,7 +30,7 @@
 
         <!-- 生成controller service 层 -->
         <plugin type="com.dgbiztech.generator.plugin.ServiceControllerPlugin">
-            <!-- 项目根目录 -->
+            <!-- 项目根目录 非必需（会自动获取当前项目根目录） 如果要生成文件到其他项目可以配置 -->
             <property name="projectDir" value="/Users/ping/repo/repo-git/mybatis-generator/mybatis-generator"></property>
             <!-- 根包名 -->
             <property name="basePackage" value="com.dgbiztech"></property>
@@ -53,17 +54,17 @@
         </commentGenerator>
 
         <!--数据库连接信息 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/health-if?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" userId="root" password="123456">
-            <property name="useInformationSchema" value="true" />
-        </jdbcConnection>
-
-
-        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"-->
-                        <!--connectionURL="jdbc:oracle:thin:@192.168.1.206:1521:orcl"-->
-                        <!--userId="yt_dms" password="yt_dms">-->
-            <!--<property name="remarksReporting" value="true"></property>-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://localhost:3306/health-if?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" userId="root" password="123456">-->
+            <!--<property name="useInformationSchema" value="true" />-->
         <!--</jdbcConnection>-->
+
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@192.168.1.206:1521:orcl"
+                        userId="yt_dms" password="yt_dms">
+            <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
 
         <!--生成的model 包路径 -->
         <javaModelGenerator targetPackage="com.dgbiztech.erp.api.model.userlogin"
