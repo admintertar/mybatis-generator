@@ -2,7 +2,7 @@ import Utils from "../utils";
 
 const { request, config } = Utils;
 const { apiPrefix } = config;
-const { basePrefix } = `${apiPrefix}/${table.entityName.toLowerCase()}`;
+const basePrefix = `${apiPrefix}/${table.entityName.toLowerCase()}`;
 
 // 获取分页列表
 export async function getPage (params) {
