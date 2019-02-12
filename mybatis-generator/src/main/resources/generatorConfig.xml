@@ -35,7 +35,7 @@
             <!-- 根包名 -->
             <property name="basePackage" value="com.dgbiztech"></property>
             <!-- 自定义模块名 不配置默认为表名 -->
-            <!--<property name="modular" value="userqwe"></property>-->
+            <property name="modular" value="userqwe"></property>
             <!-- 创建人 -->
             <property name="author" value="Hongping.Zhong"></property>
             <!-- 创建日期格式 -->

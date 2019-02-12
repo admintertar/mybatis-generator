@@ -42,6 +42,10 @@ public class Table extends HashMap<String, String> {
         VelocityInfoUtils.primaryKey(introspectedTable.getAllColumns().get(0),this);
 
         for (IntrospectedColumn introspectedColumn : introspectedTable.getAllColumns()) {
+            //如果字段包含udef字样，不显示在前端
+            if (introspectedColumn.getJavaProperty().indexOf("udef")==0){
+                continue;
+            }
             columns.add(new Column(context, introspectedTable, introspectedColumn, this));
         }
         //外部参数添加到table
