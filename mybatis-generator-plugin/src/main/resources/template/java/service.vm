@@ -18,7 +18,7 @@ import ${table.modelPackge}.${table.entityName};
  * @version 1.0.0
  */
 @Service
-public class ${table.entityName}Service extends GenericServiceImpl<${table.entityName}, String> implements I${table.entityName}Service{
+public class ${table.entityName}ServiceImpl extends GenericServiceImpl<${table.entityName}, String> implements I${table.entityName}Service{
 
     @Resource
     private ${table.entityName}Mapper mapper;

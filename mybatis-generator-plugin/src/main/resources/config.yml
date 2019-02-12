@@ -19,7 +19,7 @@ templateConfig:
   - template: java/service.vm
     destDir: src/main/java
     destPackage: ${basePackage}.erp.service.impl.${entityName}
-    destFileName: ${entityName}Service.java
+    destFileName: ${entityName}ServiceImpl.java
 
   # REST-ful Controller
   - template: java/controller.vm

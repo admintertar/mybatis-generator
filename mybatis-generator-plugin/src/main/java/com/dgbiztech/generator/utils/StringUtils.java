@@ -11,7 +11,7 @@ public class StringUtils {
      * @return
      */
     public static boolean isEmpty(String str) {
-        return str == null || str.length() == 0;
+        return str == null || str.equals("") || str.length() == 0;
     }
 
     /**

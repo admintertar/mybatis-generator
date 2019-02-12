@@ -4,6 +4,7 @@ import com.dgbiztech.generator.config.TemplateConfig;
 import com.dgbiztech.generator.entity.ConfigWrapper;
 import com.dgbiztech.generator.entity.Table;
 import com.dgbiztech.generator.utils.FileUtil;
+import com.dgbiztech.generator.utils.StringUtils;
 import com.dgbiztech.generator.utils.VelocityInfoUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -26,6 +27,7 @@ public class ServiceControllerPlugin extends PluginAdapter {
     private String basePackage = "com.dgbiztech";
 
     Logger log = LoggerFactory.getLogger(ServiceControllerPlugin.class);
+
 
     public ServiceControllerPlugin(){
         projectDir = properties.getProperty("projectDir",System.getProperty("user.dir"));
@@ -72,7 +74,7 @@ public class ServiceControllerPlugin extends PluginAdapter {
             }
             String destPackage = config.getDestPackage()
                     .replace("${basePackage}",basePackage)
-                    .replace("${entityName}",table.entityName.toLowerCase());
+                    .replace("${entityName}", StringUtils.isEmpty(properties.getProperty("modular"))?table.entityName.toLowerCase():properties.getProperty("modular"));
             //当前文件包名
             templateContext.put("destPackage",destPackage);
             //循环第一个配置的时候就是service接口
@@ -112,7 +114,7 @@ public class ServiceControllerPlugin extends PluginAdapter {
                 + destPackage.replace(".", "/")
                 + "/";
         absPath = absPath.replace("//", "/");
-        absPath = absPath.replace("${entityName}", table.getEntityName());
+        absPath = absPath.replace("${entityName}", StringUtils.isEmpty(properties.getProperty("modular"))?table.getEntityName():properties.getProperty("modular"));
         absPath = absPath.replace("${basePackage}", basePackage.replace(".", "/"));
         absPath = absPath.toLowerCase() + destFileName;
         absPath = absPath.replace("${entityName}", table.getEntityName());
