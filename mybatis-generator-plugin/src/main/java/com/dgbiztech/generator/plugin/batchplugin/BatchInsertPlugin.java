@@ -78,9 +78,9 @@ public class BatchInsertPlugin extends PluginAdapter {
             }
 
             String ifColumnSql = String.format(" %s,",columnName);
-            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifColumnSql);
+            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifColumnSql, introspectedColumn);
             String ifBeanSql = String.format(" %s,",parameterClause);
-            XmlElement ifBeanElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifBeanSql);
+            XmlElement ifBeanElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifBeanSql, introspectedColumn);
 
             trimColumnElement.addElement(ifElement);
             trimBeanElement.addElement(ifBeanElement);

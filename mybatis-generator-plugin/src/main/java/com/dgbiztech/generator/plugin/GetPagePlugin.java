@@ -72,7 +72,7 @@ public class GetPagePlugin extends PluginAdapter {
             String parameterClause = MyBatis3FormattingUtilities.getParameterClause(introspectedColumn);
 
             String ifSql = String.format("AND %s = %s ",columnName,parameterClause);
-            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql);
+            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql, introspectedColumn);
 
             whereElement.addElement(ifElement);
         }

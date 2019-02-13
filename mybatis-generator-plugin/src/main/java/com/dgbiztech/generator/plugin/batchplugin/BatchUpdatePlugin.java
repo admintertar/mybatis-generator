@@ -1,13 +1,10 @@
 package com.dgbiztech.generator.plugin.batchplugin;
 
-import com.dgbiztech.generator.utils.MethodGeneratorTool;
 import com.dgbiztech.generator.utils.SqlMapperGeneratorTool;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
-import org.mybatis.generator.api.dom.java.Interface;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
@@ -96,8 +93,8 @@ public class BatchUpdatePlugin extends PluginAdapter {
                 continue;
             }
 
-            String ifSql = String.format(" %s = %s ",columnName,parameterClause);
-            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql);
+            String ifSql = String.format(" %s = %s ,",columnName,parameterClause);
+            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql, introspectedColumn);
 
             setElement.addElement(ifElement);
 

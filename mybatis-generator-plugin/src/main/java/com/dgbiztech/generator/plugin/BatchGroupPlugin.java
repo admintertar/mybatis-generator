@@ -8,9 +8,7 @@ import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class BatchGroupPlugin extends PluginAdapter {
 
@@ -123,8 +121,8 @@ public class BatchGroupPlugin extends PluginAdapter {
                 continue;
             }
 
-            String ifSql = String.format(" %s = %s ",columnName,parameterClause);
-            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql);
+            String ifSql = String.format(" %s = %s ,",columnName,parameterClause);
+            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql,introspectedColumn);
 
             setElement.addElement(ifElement);
         }
@@ -181,9 +179,9 @@ public class BatchGroupPlugin extends PluginAdapter {
             }
 
             String ifColumnSql = String.format(" %s,",columnName);
-            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifColumnSql);
+            XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifColumnSql, introspectedColumn);
             String ifBeanSql = String.format(" %s,",parameterClause);
-            XmlElement ifBeanElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifBeanSql);
+            XmlElement ifBeanElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifBeanSql, introspectedColumn);
 
             trimColumnElement.addElement(ifElement);
             trimBeanElement.addElement(ifBeanElement);

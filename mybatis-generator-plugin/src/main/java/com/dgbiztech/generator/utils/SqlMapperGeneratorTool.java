@@ -1,5 +1,6 @@
 package com.dgbiztech.generator.utils;
 
+import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
@@ -92,10 +93,17 @@ public class SqlMapperGeneratorTool {
      * 基础IF Element构造器.
      * @param columnJavaTypeName
      * @param sql
+     * @param introspectedColumn
      * @return
      */
-    public static XmlElement baseIfJudgeElementGen(String columnJavaTypeName,String sql){
-        String colmunJudge = columnJavaTypeName + " != null and " + columnJavaTypeName + " != ''";
+    public static XmlElement baseIfJudgeElementGen(String columnJavaTypeName, String sql, IntrospectedColumn introspectedColumn){
+        String colmunJudge;
+        if (introspectedColumn.getFullyQualifiedJavaType().getFullyQualifiedName().equals("java.util.Date")){
+            colmunJudge = columnJavaTypeName + " != null ";
+        }else{
+            colmunJudge = columnJavaTypeName + " != null and " + columnJavaTypeName + " != ''";
+        }
+
         XmlElement ifElement = new XmlElement("if");
         ifElement.addAttribute(new Attribute("test", colmunJudge));
         ifElement.addElement(new TextElement(sql));
