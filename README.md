@@ -1,6 +1,7 @@
 # mybatis-generator
 
 #**以知BUG**
+
 oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
 即使是配置了
 
@@ -9,9 +10,11 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
         <property name="forceBigDecimals" value="false" />  
     </javaTypeResolver>
 ```
+
 依旧会出现
 
 ####临时解决办法
+
     方法1  ）修改  mybatis-generator-core的版本为1.3.2
             这样就不能使用com.dgbiztech.generator.plugin.ServiceControllerPlugin插件
     方法2  ）手动替换类里面的BigDecimal类型
