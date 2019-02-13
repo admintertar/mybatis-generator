@@ -13,7 +13,7 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
 
 依旧会出现
 
-####临时解决办法
+#### 临时解决办法
 
     方法1  ）修改  mybatis-generator-core的版本为1.3.2
             这样就不能使用com.dgbiztech.generator.plugin.ServiceControllerPlugin插件
