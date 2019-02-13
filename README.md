@@ -1,6 +1,6 @@
 # mybatis-generator
 
-#**以知BUG**
+# **以知BUG**
 
 oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
 即使是配置了
