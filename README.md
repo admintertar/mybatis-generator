@@ -11,7 +11,7 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
     </javaTypeResolver>
 ```
 
-依旧会出现
+依旧会出现  自定义一个Resolver也不行，自定义的Resolver压根就没有实例化过
 
 #### 临时解决办法
 
