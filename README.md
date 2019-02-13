@@ -13,6 +13,8 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
 
 依旧会出现  自定义一个Resolver也不行，自定义的Resolver压根就没有实例化过
 
+这似乎是最新版本的一个bug 有空换个低版本试试
+
 #### 临时解决办法
 
     方法1  ）修改  mybatis-generator-core的版本为1.3.2
