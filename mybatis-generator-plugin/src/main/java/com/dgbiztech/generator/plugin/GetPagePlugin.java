@@ -16,6 +16,8 @@ public class GetPagePlugin extends PluginAdapter {
 
     private final static String GET_PAGE = "getPage";
 
+    private Boolean likequery;
+
     @Override
     public boolean validate(List<String> warnings) {
         return true;
@@ -36,6 +38,8 @@ public class GetPagePlugin extends PluginAdapter {
     }
 
     public void addSqlMapper(Document document, IntrospectedTable introspectedTable) {
+        likequery = Boolean.valueOf(properties.getProperty("likequery","false"));
+
         String tableName = introspectedTable.getFullyQualifiedTableNameAtRuntime();
         List<IntrospectedColumn> columnList = introspectedTable.getAllColumns();
 
@@ -70,8 +74,13 @@ public class GetPagePlugin extends PluginAdapter {
             String columnJavaTypeName = introspectedColumn.getJavaProperty();
 
             String parameterClause = MyBatis3FormattingUtilities.getParameterClause(introspectedColumn);
-
-            String ifSql = String.format("AND %s = %s ",columnName,parameterClause);
+            String ifSql;
+            if(likequery) {
+                ifSql = String.format("AND %s LIKE %s || ",columnName,parameterClause);
+                ifSql+=" '%' ";
+            }else {
+                ifSql = String.format("AND %s = %s ",columnName,parameterClause);
+            }
             XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql, introspectedColumn);
 
             whereElement.addElement(ifElement);

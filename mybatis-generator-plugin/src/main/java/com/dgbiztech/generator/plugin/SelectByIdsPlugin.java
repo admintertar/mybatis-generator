@@ -1,4 +1,4 @@
-package com.dgbiztech.generator.plugin.batchplugin;
+package com.dgbiztech.generator.plugin;
 
 import com.dgbiztech.generator.utils.SqlMapperGeneratorTool;
 import org.mybatis.generator.api.IntrospectedColumn;

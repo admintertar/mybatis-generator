@@ -22,6 +22,11 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
     方法2  ）手动替换类里面的BigDecimal类型
             XML文件里面的sql语句的映射类型是OK的
         
+#### 2010-02-14更新
+    2）新增功能
+        a) 新增插件com.dgbiztech.generator.plugin.GetPagePlugin模糊查询语句生成
+        <property name="likequery" value="true"></property>
+
 
 #### 2010-02-13更新
     1）修复BUG
@@ -29,7 +34,7 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
            生成的sql语句缺少符号问题
         b) 修复生成的if节点日期类型的字段不判断空字符串（''）
     2）新增功能
-        a) 新增插件com.dgbiztech.generator.plugin.batchplugin.SelectByIdsPlugin
+        a) 新增插件com.dgbiztech.generator.plugin.SelectByIdsPlugin
            根据主键批量查询数据
 #### 2010-02-12更新
     1）新增功能
