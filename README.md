@@ -24,7 +24,7 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
         
 #### 2010-02-14更新
     2）新增功能
-        a) 新增插件com.dgbiztech.generator.plugin.GetPagePlugin模糊查询语句生成
+        a) 新增插件com.dgbiztech.generator.plugin.GetPagePlugin是否启用模糊查询
         <property name="likequery" value="true"></property>
 
 
