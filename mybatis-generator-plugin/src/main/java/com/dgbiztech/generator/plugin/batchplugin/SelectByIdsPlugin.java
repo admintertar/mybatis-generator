@@ -79,7 +79,7 @@ public class SelectByIdsPlugin extends PluginAdapter {
                 new FullyQualifiedJavaType(context.getJavaModelGeneratorConfiguration().getTargetPackage()
                         +"."+introspectedTable.getFullyQualifiedTable().getDomainObjectName()));
 
-        selectXmlElement.addElement(new TextElement(String.format("SELECT * FROM %s WHERE IN %s",tableName,primaryKeyName)));
+        selectXmlElement.addElement(new TextElement(String.format("SELECT * FROM %s WHERE %s IN",tableName,primaryKeyName)));
 
         XmlElement foreachElement = SqlMapperGeneratorTool.baseForeachElementGenerator("list", "item", "index", ",","(",")");
         selectXmlElement.addElement(foreachElement);
