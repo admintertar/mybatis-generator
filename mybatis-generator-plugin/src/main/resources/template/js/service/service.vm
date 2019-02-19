@@ -20,3 +20,12 @@ export async function getInfo({primaryKey}){
         method: 'get'
     })
 }
+
+//保存或者更新数据
+export async function saveOrUpdata(params) {
+    return request({
+        url: `${basePrefix}/saveOrUpdata`,
+        method: 'post',
+        data: params,
+    })
+}

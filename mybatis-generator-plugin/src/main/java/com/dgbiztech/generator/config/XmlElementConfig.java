@@ -6,6 +6,7 @@ import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
 import java.util.ArrayList;
+import java.util.function.BiFunction;
 import java.util.List;
 
 /*
@@ -26,6 +27,33 @@ public class XmlElementConfig {
      * 子节点
      */
     private List<ChildNodeElementConfig> childNodeElementConfigs = new ArrayList<>();
+
+    /**
+     * 添加子节点
+     * @param xmlElement
+     * @return
+     */
+    public XmlElementConfig addXmlElement(XmlElement xmlElement){
+        this.xmlElement.addElement(xmlElement);
+        return this;
+    }
+
+    public XmlElementConfig addXmlElement(List<ColumnConfig> list,XmlElement xmlElement){
+
+        return this;
+    }
+
+    /**
+     * 添加文本
+     * @param textElement
+     * @return
+     */
+    public XmlElementConfig setXmlText(TextElement textElement){
+        this.xmlElement.addElement(textElement);
+        return this;
+    }
+
+
 
     public XmlElementConfig(String sqlElementType, String sqlMapperId, FullyQualifiedJavaType parameterType,FullyQualifiedJavaType resultType) {
         xmlElement = SqlMapperGeneratorTool.baseElementGenerator(sqlElementType,sqlMapperId,parameterType,resultType);

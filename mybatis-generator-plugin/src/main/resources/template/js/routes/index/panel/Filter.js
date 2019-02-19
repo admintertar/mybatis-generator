@@ -1,0 +1,56 @@
+import React from 'react'
+import moment from 'moment';
+import {Input, Row, Col, Form, Select, DatePicker} from 'antd'
+import {Panel} from 'components'
+import utils from 'utils'
+import Enumeration from '../../../../components/Enumeration'
+
+const {RangePicker} = DatePicker;
+const {Option} = Select;
+
+class FilterPanel extends Panel.Filter {
+
+    renderContent({getFieldDecorator}) {
+        const dateFormat = 'YYYY-MM-DD HH:mm:ss';
+        const formItemCol = {
+            labelCol: {span: 6},
+            wrapperCol: {span: 18},
+
+        };
+        return (
+            <div>
+                <Row>
+                    <Col span="12">
+                        <Form.Item label="新/老客户" {...formItemCol} >
+                            {getFieldDecorator('isNewCustomer')(
+                                <Select>
+                                    <Select.Option value="Y">新客户</Select.Option>
+                                    <Select.Option value="N">老客户</Select.Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+                    </Col>
+                    <Col span="12">
+                        <Form.Item label="创建人" {...formItemCol} >
+                            {getFieldDecorator('createdPerson')(
+                                <Input placeholder="请输入创建人,可录入部分模糊查询"/>
+                            )}
+                        </Form.Item>
+                    </Col>
+                    <Col span="12">
+                        <Form.Item label="进/出站时间" {...formItemCol}>
+                            <div>
+                                {getFieldDecorator('dateRange')(
+                                    <RangePicker style={{width:'100%'}} format={dateFormat}/>
+                                )}
+                            </div>
+                        </Form.Item>
+                    </Col>
+                </Row>
+            </div>
+        )
+    }
+}
+
+
+export default utils.createFilterForm(FilterPanel);

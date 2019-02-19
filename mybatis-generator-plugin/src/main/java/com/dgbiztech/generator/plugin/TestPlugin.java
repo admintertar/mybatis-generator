@@ -52,6 +52,8 @@ public class TestPlugin extends AbsBasePlugin{
 
         childNodeElementConfigs.add(forNode);
 
+        List<ColumnConfig> allColumns = tableConfig.getAllColumns();
+        XmlElement xml = new XmlElement("if");
         return xmlElementConfig;
     }
 }

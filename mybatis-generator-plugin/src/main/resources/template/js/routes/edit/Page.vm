@@ -1,0 +1,27 @@
+import React from 'react'
+import {message} from 'antd'
+import {hashHistory} from 'dva/router'
+import AddPage from '../add/Page'
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
+
+class Page extends AddPage {
+    onSave(formData,reset){
+        return inoutregistService.saveOrUpdata({
+            ...formData,
+            action:formData.$!table.get("primaryKey")?'UPDATE':'INSERT',
+        }).then((response)=>{
+            if(!response.hasError&&!reset){
+                message.success('修改成功');
+                hashHistory.replace({
+                    pathname:'/${table.entityName.toLowerCase()}/detail',
+                    query:{
+                        payload:response.dto.$!table.get("primaryKey")
+                    }
+                });
+            }
+            return response;
+        })
+    }
+}
+
+export default Page;

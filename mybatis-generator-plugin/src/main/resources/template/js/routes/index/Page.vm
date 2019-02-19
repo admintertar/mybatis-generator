@@ -1,0 +1,33 @@
+import React from "react";
+import {FilterPanel, TablePanel, ToolsPanel} from "./panel/index";
+import {message, Modal} from "antd";
+import Utils from "utils";
+import {connect} from "dva";
+import ListPage from "components/Page/List";
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
+
+class Page extends ListPage {
+
+    state = {
+        columnsConfig: Utils.getColumnConfig(this.modelName),
+    };
+
+    handleBatchAction = (actionName) => {
+
+    };
+
+    renderToolsPanel(props) {
+        return <ToolsPanel {...props} onBatchAction={this.handleBatchAction}/>
+    }
+
+    renderTablePanel(props) {
+        return <TablePanel {...props} />
+    }
+
+    renderFilterPanel(props) {
+        return <FilterPanel {...props} />
+    }
+
+}
+
+export default Page;

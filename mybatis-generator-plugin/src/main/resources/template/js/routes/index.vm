@@ -1,0 +1,28 @@
+import React from 'react'
+import Config from 'utils/config'
+import Page from "./index/Page";
+import {connect} from "dva";
+import Utils from "../../utils";
+
+const props = {
+  id:Config.pageRootId,
+  pageTitle:'进出站登记',
+  className:'page-common-list'
+};
+
+const APage = connect(({${table.entityName.toLowerCase()}, app,loading}) => (
+    {
+        pageData: ${table.entityName.toLowerCase()},
+        loading
+    }
+))(Utils.createPageForm(Page));
+
+function index () {
+  return (
+    <div id={props.id} className={props.className} >
+      <APage />
+    </div>
+  )
+}
+
+export default index

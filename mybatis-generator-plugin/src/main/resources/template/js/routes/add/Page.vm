@@ -1,0 +1,75 @@
+import React from 'react'
+import {Col, DatePicker, Form, Input, message, Row, Select} from 'antd'
+import {hashHistory} from 'dva/router'
+import {FormPage, Permission, SelectMore} from 'components'
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
+
+class Page extends FormPage {
+
+    onSave(formData,reset){
+        return ${table.entityName.toLowerCase()}Service.saveOrUpdata({
+            ...formData,
+            action:formData.$!table.get("primaryKey")?'UPDATE':'INSERT',
+        }).then((response)=>{
+            if(!response.hasError&&!reset){
+                message.success('添加成功');
+                hashHistory.replace({
+                    pathname:'/${table.entityName.toLowerCase()}/edit',
+                    query:{
+                        payload:response.dto.$!table.get("primaryKey")
+                    }
+                });
+            }
+            return response;
+        })
+    }
+
+    renderBasePanel(pageData,{getFieldDecorator}){
+        let isEdited = !!this.getPrimaryValue();
+        const dateFormat = 'YYYY-MM-DD HH:mm:ss';
+        return (
+            <div>
+                <Row>
+                #foreach($column in $table.columns)
+                    #if($!{velocityCount}%4==0)
+                    </Row>
+                    <Row>
+                    #end
+                    <Col span="6">
+                        <Form.Item label="${column.remarks}"  >
+                            {getFieldDecorator('${column.fieldName}', {
+                                rules: [{required:true,message:'请填写${column.remarks}'}]
+                            })(
+                                <Input placeholder="请填写${column.remarks}"/>
+                            )}
+                        </Form.Item>
+                    </Col>
+                #end
+                </Row>
+            </div>
+        );
+    }
+
+    renderAction() {
+        if (this.primaryKey && this.getPrimaryValue()) {
+            const {formData} = this.props.pageData;
+            return (
+                <div style={{textAlign: 'right'}}>
+                    <Permission.Button type="primary" loading={this.state.saving} onClick={() => this.handleSubmit()}
+                                        size={'large'}>保存</Permission.Button>
+                </div>
+            );
+        } else {
+            return (
+                <div style={{textAlign: 'right'}}>
+                    <Permission.Button type="primary" loading={this.state.saving} onClick={() => this.handleSubmit()}
+                                       size={'large'}>保存</Permission.Button>
+                    <Permission.Button type="primary" onClick={() => this.handleSubmit(true)}
+                                       size={'large'}>保存并新增</Permission.Button>
+                </div>
+            );
+        }
+    }
+}
+
+export default Page;

@@ -2,6 +2,7 @@ package $!destPackage;
 
 import com.dgbiztech.core.service.GenericService;
 import ${table.modelPackge}.${table.entityName};
+import java.util.List;
 
 public interface I${table.entityName}Service extends GenericService<${table.entityName},String> {
 

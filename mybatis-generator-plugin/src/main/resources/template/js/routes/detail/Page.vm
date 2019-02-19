@@ -1,0 +1,59 @@
+import React from "react";
+import {Col, message, Row} from "antd";
+import {hashHistory} from "dva/router";
+import {DetailPage, Display, Permission} from "components";
+
+class Page extends DetailPage {
+    //编辑
+    onCoickEdit = (payload) => {
+        hashHistory.push({
+            pathname:'/${table.entityName.toLowerCase()}/edit',
+            query:{
+                payload:payload
+            }
+        });
+    };
+
+    renderBasePanel(pageData) {
+        let isEdited = !!this.getPrimaryValue();
+        const {formData} = pageData;
+        return (
+            <div>
+                <div className="common-attr-list">
+                    <Row>
+                        #foreach($column in $table.columns)
+                            #if($!{velocityCount}%4==0)
+                            </Row>
+                            <Row>
+                            #end
+                            <Col span="6">
+                            <dl>
+                                <dt><span>${column.remarks}</span></dt>
+                                <dd>
+                                    <span>{formData.${column.fieldName}}</span>
+                                </dd>
+                            </dl>
+                            </Col>
+                        #end
+
+                    </Row>
+                </div>
+            </div>
+        );
+    }
+
+    renderAction() {
+        if (this.primaryKey && this.getPrimaryValue()) {
+            const {formData} = this.props.pageData;
+            return (
+                <div style={{textAlign: 'right'}}>
+                    <Permission.Button type="primary" loading={this.state.saving}
+                                       onClick={() => this.onCoickEdit(formData.$!table.get("primaryKey"))}
+                                       size={'large'}>编辑</Permission.Button>
+                </div>
+            );
+        }
+    }
+}
+
+export default Page;

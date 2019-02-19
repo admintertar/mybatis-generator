@@ -119,9 +119,9 @@ public class ServiceControllerPlugin extends PluginAdapter {
         absPath = absPath.toLowerCase() + destFileName;
         absPath = absPath.replace("${entityName}", table.getEntityName());
         //针对js文件做小写处理
-        if (absPath.indexOf(".js")>0){
-            absPath = absPath.toLowerCase();
-        }
+//        if (absPath.indexOf(".js")>0){
+//            absPath = absPath.toLowerCase();
+//        }
         log.info("文件路径："+absPath);
         return absPath;
     }
