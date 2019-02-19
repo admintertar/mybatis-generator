@@ -26,7 +26,7 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
 #### 2010-02-19更新   
     1）新增功能
         a) 新增前端部分模板文件add  detail  edit  index
-    
+        b) 注解生成添加到get set方法之上,方便写代码的时候查看
     
 
 #### 2010-02-14更新
