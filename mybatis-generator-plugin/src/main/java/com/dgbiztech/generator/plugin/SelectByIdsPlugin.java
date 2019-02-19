@@ -39,7 +39,10 @@ public class SelectByIdsPlugin extends PluginAdapter {
 
     private void addSqlInterface(Interface interfaze, IntrospectedTable introspectedTable) {
         Method method = new Method();
-        method.addJavaDocLine("/***请勿删除 父类没有此方法***/");
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine(" * 请勿删除 父类没有此方法");
+        method.addJavaDocLine(" * 根据主键id批量查询数据");
+        method.addJavaDocLine(" **/");
         method.setName(SELECT_BY_IDS);
         method.setReturnType(new FullyQualifiedJavaType("List<"+introspectedTable.getFullyQualifiedTable().getDomainObjectName()+">"));
         method.addParameter(new Parameter(new FullyQualifiedJavaType("List<String>"),"ids"));
