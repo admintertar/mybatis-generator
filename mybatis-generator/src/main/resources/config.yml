@@ -56,3 +56,51 @@ templateConfig:
     destDir: src/main/resources
     destPackage: react/service
     destFileName: ${entityName}.js
+
+  # 生成add/Page.vm
+  - template: js/routes/add/Page.vm
+    destDir: src/main/resources
+    destPackage: react/routes/add
+    destFileName: Page.js
+
+  # 生成detail/Page.vm
+  - template: js/routes/detail/Page.vm
+    destDir: src/main/resources
+    destPackage: react/routes/detail
+    destFileName: Page.js
+
+  # 生成edit/Page.vm
+  - template: js/routes/edit/Page.vm
+    destDir: src/main/resources
+    destPackage: react/routes/edit
+    destFileName: Page.js
+
+  # 生成index/Page.vm
+  - template: js/routes/index/Page.vm
+    destDir: src/main/resources
+    destPackage: react/routes/index
+    destFileName: Page.js
+
+  # 生成add.vm
+  - template: js/routes/add.vm
+    destDir: src/main/resources
+    destPackage: react/routes
+    destFileName: add.js
+
+  # 生成detail.vm
+  - template: js/routes/detail.vm
+    destDir: src/main/resources
+    destPackage: react/routes
+    destFileName: detail.js
+
+  # 生成edit.vm
+  - template: js/routes/edit.vm
+    destDir: src/main/resources
+    destPackage: react/routes
+    destFileName: edit.js
+
+  # 生成edit.vm
+  - template: js/routes/index.vm
+    destDir: src/main/resources
+    destPackage: react/routes
+    destFileName: index.js

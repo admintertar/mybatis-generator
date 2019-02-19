@@ -21,9 +21,16 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
             这样就不能使用com.dgbiztech.generator.plugin.ServiceControllerPlugin插件
     方法2  ）手动替换类里面的BigDecimal类型
             XML文件里面的sql语句的映射类型是OK的
-        
+
+
+#### 2010-02-19更新   
+    1）新增功能
+        a) 新增前端部分模板文件add  detail  edit  index
+    
+    
+
 #### 2010-02-14更新
-    2）新增功能
+    1）新增功能
         a) 新增插件com.dgbiztech.generator.plugin.GetPagePlugin是否启用模糊查询
         <property name="likequery" value="true"></property>
 
