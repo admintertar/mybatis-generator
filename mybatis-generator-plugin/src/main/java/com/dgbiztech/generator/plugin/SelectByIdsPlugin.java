@@ -32,6 +32,7 @@ public class SelectByIdsPlugin extends PluginAdapter {
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         if (introspectedTable.getTargetRuntime().equals(IntrospectedTable.TargetRuntime.MYBATIS3)) {
             addSqlInterface(interfaze, introspectedTable);
+            interfaze.addImportedType(new FullyQualifiedJavaType("java.util.List"));
         }
         return super.clientGenerated(interfaze, topLevelClass, introspectedTable);
     }
