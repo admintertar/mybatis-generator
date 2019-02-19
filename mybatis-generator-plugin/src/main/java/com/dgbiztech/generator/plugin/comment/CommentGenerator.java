@@ -3,9 +3,7 @@ package com.dgbiztech.generator.plugin.comment;
 import com.dgbiztech.generator.utils.StringUtils;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.api.dom.java.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,4 +55,41 @@ public class CommentGenerator extends EmptyCommentGenerator {
         field.addJavaDocLine(" * " + (StringUtils.isEmpty(remarks)?introspectedColumn.getActualColumnName():remarks));
         field.addJavaDocLine(" */");
     }
+
+    @Override
+    public void addGetterComment(Method method, IntrospectedTable introspectedTable,
+                                 IntrospectedColumn introspectedColumn) {
+
+        method.addJavaDocLine("/**");
+        StringBuilder sb = new StringBuilder();
+        sb.append(" * ");
+        sb.append(introspectedColumn.getRemarks());
+        method.addJavaDocLine(sb.toString().replace("\n", " "));
+        sb.setLength(0);
+        sb.append(" * @return ");
+        sb.append(introspectedColumn.getActualColumnName());
+        sb.append(" ");
+        sb.append(introspectedColumn.getRemarks());
+        method.addJavaDocLine(sb.toString().replace("\n", " "));
+        method.addJavaDocLine(" */");
+    }
+
+    @Override
+    public void addSetterComment(Method method, IntrospectedTable introspectedTable,
+                                 IntrospectedColumn introspectedColumn) {
+        method.addJavaDocLine("/**");
+        StringBuilder sb = new StringBuilder();
+        sb.append(" * ");
+        sb.append(introspectedColumn.getRemarks());
+        method.addJavaDocLine(sb.toString().replace("\n", " "));
+        Parameter parm = method.getParameters().get(0);
+        sb.setLength(0);
+        sb.append(" * @param ");
+        sb.append(parm.getName());
+        sb.append(" ");
+        sb.append(introspectedColumn.getRemarks());
+        method.addJavaDocLine(sb.toString().replace("\n", " "));
+        method.addJavaDocLine(" */");
+    }
+
 }
