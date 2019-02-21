@@ -49,9 +49,7 @@ public class TestPlugin extends AbsBasePlugin{
             ifNode.setXmlElement(anIf);
             ifNodes.add(ifNode);
         }
-
         childNodeElementConfigs.add(forNode);
-
         List<ColumnConfig> allColumns = tableConfig.getAllColumns();
         XmlElement xml = new XmlElement("if");
         return xmlElementConfig;
