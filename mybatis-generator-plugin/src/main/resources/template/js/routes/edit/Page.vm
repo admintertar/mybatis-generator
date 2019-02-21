@@ -6,7 +6,7 @@ import * as ${table.entityName.toLowerCase()}Service from 'services/${table.enti
 
 class Page extends AddPage {
     onSave(formData,reset){
-        return inoutregistService.saveOrUpdata({
+        return ${table.entityName.toLowerCase()}Service.saveOrUpdata({
             ...formData,
             action:formData.$!table.get("primaryKey")?'UPDATE':'INSERT',
         }).then((response)=>{
