@@ -22,6 +22,9 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
     方法2  ）手动替换类里面的BigDecimal类型
             XML文件里面的sql语句的映射类型是OK的
 
+#### 2010-02-25更新
+    1）修改功能
+        a) com.dgbiztech.generator.plugin.GetPagePlugin插件生成除去udef字段
 
 #### 2010-02-19更新   
     1）新增功能
