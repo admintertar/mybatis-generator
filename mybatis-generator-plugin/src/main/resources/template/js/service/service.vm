@@ -14,9 +14,9 @@ export async function getPage (params) {
 }
 
 //获取一条数据
-export async function getInfo({primaryKey}){
+export async function getInfo({$!table.get("primaryKey")}){
     return request({
-        url: `${basePrefix}/${primaryKey}`,
+        url: `${basePrefix}/$!table.get("primaryKey")`,
         method: 'get'
     })
 }

@@ -16,7 +16,7 @@ class Page extends FormPage {
                 hashHistory.replace({
                     pathname:'/${table.entityName.toLowerCase()}/edit',
                     query:{
-                        payload:response.dto.$!table.get("primaryKey")
+                        $!table.get("primaryKey"):response.dto.$!table.get("primaryKey")
                     }
                 });
             }

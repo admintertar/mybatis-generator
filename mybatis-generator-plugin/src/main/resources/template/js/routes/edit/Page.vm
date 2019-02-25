@@ -15,7 +15,7 @@ class Page extends AddPage {
                 hashHistory.replace({
                     pathname:'/${table.entityName.toLowerCase()}/detail',
                     query:{
-                        payload:response.dto.$!table.get("primaryKey")
+                        $!table.get("primaryKey"):response.dto.$!table.get("primaryKey")
                     }
                 });
             }

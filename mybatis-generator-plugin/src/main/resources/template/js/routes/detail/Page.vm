@@ -9,7 +9,7 @@ class Page extends DetailPage {
         hashHistory.push({
             pathname:'/${table.entityName.toLowerCase()}/edit',
             query:{
-                payload:payload
+                $!table.get("primaryKey"):payload
             }
         });
     };

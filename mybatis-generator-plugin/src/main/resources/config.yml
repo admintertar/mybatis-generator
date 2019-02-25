@@ -81,6 +81,30 @@ templateConfig:
     destPackage: react/routes/index
     destFileName: Page.js
 
+  # 生成index/panel/Filter.vm
+  - template: js/routes/index/panel/Filter.vm
+    destDir: src/main/resources
+    destPackage: react/routes/index/panel
+    destFileName: Filter.js
+
+  # 生成index/panel/index.vm
+  - template: js/routes/index/panel/index.vm
+    destDir: src/main/resources
+    destPackage: react/routes/index/panel
+    destFileName: index.js
+
+  # 生成index/panel/Table.vm
+  - template: js/routes/index/panel/Table.vm
+    destDir: src/main/resources
+    destPackage: react/routes/index/panel
+    destFileName: Table.js
+
+  # 生成index/panel/Tools.vm
+  - template: js/routes/index/panel/Tools.vm
+    destDir: src/main/resources
+    destPackage: react/routes/index/panel
+    destFileName: Tools.js
+
   # 生成add.vm
   - template: js/routes/add.vm
     destDir: src/main/resources

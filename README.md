@@ -25,7 +25,10 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
 #### 2010-02-25更新
     1）修改功能
         a) com.dgbiztech.generator.plugin.GetPagePlugin插件生成除去udef字段
-
+        b) com.dgbiztech.generator.plugin.GetPagePlugin插件如果有CREATED_DATE字段，自动添加 ORDER BY CREATED_DATE DESC 排序
+    2）新增功能
+        a）增加模板文件Filter.vm index.vm Table.vm Tools.vm
+    
 #### 2010-02-19更新   
     1）新增功能
         a) 新增前端部分模板文件add  detail  edit  index

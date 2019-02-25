@@ -60,11 +60,11 @@ public class GetPagePlugin extends PluginAdapter {
                 GET_PAGE,
                 new FullyQualifiedJavaType(baseRecordType),
                 new FullyQualifiedJavaType("com.dgbiztech.core.dto.MapDto"));
-        getPageXmlElement.addElement(new TextElement(String.format("SELECT * FROM %s ",tableName)));
+        getPageXmlElement.addElement(new TextElement(String.format("SELECT <include refid=\"Base_Column_List\"></include> FROM %s ",tableName)));
 
         XmlElement whereElement = new XmlElement("where");
         getPageXmlElement.addElement(whereElement);
-
+        Boolean isOrderBy = false;
         for (int i = 0; i < columnList.size(); i++) {
 
             IntrospectedColumn introspectedColumn = columnList.get(i);
@@ -74,6 +74,9 @@ public class GetPagePlugin extends PluginAdapter {
             String columnJavaTypeName = introspectedColumn.getJavaProperty();
             if (columnJavaTypeName.indexOf("udef")>=0){
                 continue;
+            }
+            if (columnJavaTypeName.equals("createdDate")){
+                isOrderBy = true;
             }
 
             String parameterClause = MyBatis3FormattingUtilities.getParameterClause(introspectedColumn);
@@ -87,6 +90,9 @@ public class GetPagePlugin extends PluginAdapter {
             XmlElement ifElement = SqlMapperGeneratorTool.baseIfJudgeElementGen(columnJavaTypeName, ifSql, introspectedColumn);
 
             whereElement.addElement(ifElement);
+        }
+        if (isOrderBy){
+            getPageXmlElement.addElement(new TextElement("ORDER BY CREATED_DATE DESC"));
         }
 
         document.getRootElement().addElement(getPageXmlElement);

@@ -1,11 +1,10 @@
 import React from 'react'
 import {Link, hashHistory} from 'dva/router'
-import Utils from '../../../../utils/index';
+import Utils from 'utils';
 import { message, Menu} from 'antd'
-import {Iconfont} from '../../../../components';
-import CommonTablePanel from "../../../../components/Panel/Table";
-import * as terminalService from 'services/terminalorder';
-import Display from '../../../../components/Display'
+import {Iconfont,Display} from 'components';
+import CommonTablePanel from "components/Panel/Table";
+import * as ${table.entityName.toLowerCase()}Service from 'services/${table.entityName.toLowerCase()}'
 
 class TablePanel extends CommonTablePanel {
 
@@ -17,17 +16,17 @@ class TablePanel extends CommonTablePanel {
                 switch (key) {
                     case 'edit':
                         hashHistory.push({
-                            pathname: '/inoutregist/edit',
+                            pathname: '/${table.entityName.toLowerCase()}/edit',
                             query: {
-                                dsId: record.dsId
+                                $!table.get("primaryKey"): record.$!table.get("primaryKey")
                             }
                         });
                         break;
                     case 'detail':
                         hashHistory.push({
-                            pathname: '/inoutregist/detail',
+                            pathname: '/${table.entityName.toLowerCase()}/detail',
                             query: {
-                                dsId: record.dsId
+                                $!table.get("primaryKey"): record.$!table.get("primaryKey")
                             }
                         });
                         break;
@@ -50,16 +49,16 @@ class TablePanel extends CommonTablePanel {
     //渲染每行的每个单元格的时候，选则要显示什么
     renderColumnConfig(config, props) {
         switch (config['key']) {
-            case 'carNo':
-                config.render = (value, record) => {
-                    return <Link to={{
-                        pathname: '/inoutregist/detail',
-                        query: {
-                            dsId: record.dsId
-                        }
-                    }}>{value}</Link>
-                };
-                break;
+//            case 'carNo':
+//                config.render = (value, record) => {
+//                    return <Link to={{
+//                        pathname: '/inoutregist/detail',
+//                        query: {
+//                            dsId: record.dsId
+//                        }
+//                    }}>{value}</Link>
+//                };
+//                break;
         }
         return config;
     };
