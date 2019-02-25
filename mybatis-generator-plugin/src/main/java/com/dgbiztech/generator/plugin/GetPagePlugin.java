@@ -72,6 +72,9 @@ public class GetPagePlugin extends PluginAdapter {
             String columnName = introspectedColumn.getActualColumnName();
 
             String columnJavaTypeName = introspectedColumn.getJavaProperty();
+            if (columnJavaTypeName.indexOf("udef")>=0){
+                continue;
+            }
 
             String parameterClause = MyBatis3FormattingUtilities.getParameterClause(introspectedColumn);
             String ifSql;
