@@ -21,6 +21,15 @@ oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
             这样就不能使用com.dgbiztech.generator.plugin.ServiceControllerPlugin插件
     方法2  ）手动替换类里面的BigDecimal类型
             XML文件里面的sql语句的映射类型是OK的
+            
+
+#### 2010-03-12更新
+    1）修复BUG
+        a) 修复插件com.dgbiztech.generator.plugin.batchplugin.BatchInsertPlugin生成的sql语句错误
+        b) 启用JavaTypeResolver，解决oracle数据库生成NUMBER类型的字段会映射成BigDecimal类型
+        <javaTypeResolver type="com.dgbiztech.generator.resolver.BigDecimalJavaTypeResolver">
+            <property name ="forceBigDecimals" value ="true"/>
+        </javaTypeResolver>
 
 #### 2010-02-25更新
     1）修改功能

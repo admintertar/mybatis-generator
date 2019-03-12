@@ -36,6 +36,7 @@ public class BigDecimalJavaTypeResolver implements JavaTypeResolver {
 
     public BigDecimalJavaTypeResolver() {
         super();
+        System.out.println("类型转换器启动》》》》》》》》》》》》》》》》》》》》》》》");
         properties = new Properties();
         typeMap = new HashMap<Integer, JdbcTypeInformation>();
 
@@ -121,7 +122,7 @@ public class BigDecimalJavaTypeResolver implements JavaTypeResolver {
                     if (introspectedColumn.getScale() > 0
                             || introspectedColumn.getLength() > 18
                             || forceBigDecimals) {
-                        answer = new FullyQualifiedJavaType(BigDecimal.class
+                        answer = new FullyQualifiedJavaType(Double.class
                                 .getName());
                     } else if (introspectedColumn.getLength() > 9) {
                         answer = new FullyQualifiedJavaType(Long.class.getName());

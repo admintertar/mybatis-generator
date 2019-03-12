@@ -159,7 +159,7 @@ public class BatchGroupPlugin extends PluginAdapter {
         insertXmlElement.addElement(foreachElement);
 
         XmlElement trimColumnElement = SqlMapperGeneratorTool.baseTrimElement("(",")",",");
-        XmlElement trimBeanElement = SqlMapperGeneratorTool.baseTrimElement("(",")",",");
+        XmlElement trimBeanElement = SqlMapperGeneratorTool.baseTrimElement("VALUES (",")",",");
 
         foreachElement.addElement(trimColumnElement);
         foreachElement.addElement(trimBeanElement);
