@@ -2,25 +2,11 @@
 
 # **以知BUG**
 
-oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型
-即使是配置了
+无
 
-```
-    <javaTypeResolver> 
-        <property name="forceBigDecimals" value="false" />  
-    </javaTypeResolver>
-```
+# **历史BUG**
+~~1.oracle数据库生成NUMBER类型的字段的时候会映射成BigDecimal类型~~
 
-依旧会出现  自定义一个Resolver也不行，自定义的Resolver压根就没有实例化过
-
-这似乎是最新版本的一个bug 有空换个低版本试试
-
-#### 临时解决办法
-
-    方法1  ）修改  mybatis-generator-core的版本为1.3.2
-            这样就不能使用com.dgbiztech.generator.plugin.ServiceControllerPlugin插件
-    方法2  ）手动替换类里面的BigDecimal类型
-            XML文件里面的sql语句的映射类型是OK的
             
 
 #### 2010-03-12更新
