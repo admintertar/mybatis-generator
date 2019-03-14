@@ -22,10 +22,11 @@ export async function getInfo({$!table.get("primaryKey")}){
 }
 
 //保存或者更新数据
-export async function saveOrUpdata(params) {
+export async function saveOrUpdata(params,loading=true) {
     return request({
         url: `${basePrefix}/saveOrUpdata`,
         method: 'post',
         data: params,
+        loading,
     })
 }
