@@ -31,4 +31,19 @@ public class ${table.entityName}Controller extends AbstractController<${table.en
         return service;
     }
 
+    @PostMapping("/saveOrUpdata")
+    public IDtoData saveOrUpdata(@RequestBody @Valid ${table.entityName} ${table.entityName.toLowerCase()}, BindingResult bindingResult) {
+    ResponseDtoData<${table.entityName}> response = new ResponseDtoData<${table.entityName}>();
+        try {
+            if (bindingResult.hasErrors()){
+                throw new ValidateException(bindingResult.getFieldError().getDefaultMessage());
+            }
+            response.setResult(service.saveOrUpdata(${table.entityName.toLowerCase()}));
+        } catch (Exception e) {
+            log.error(e);
+            response.setException(e);
+        }
+        return response;
+    }
+
 }

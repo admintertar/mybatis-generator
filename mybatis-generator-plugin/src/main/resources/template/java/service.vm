@@ -28,4 +28,9 @@ public class ${table.entityName}ServiceImpl extends GenericServiceImpl<${table.e
         return mapper;
     }
 
+    @Override
+    public ${table.entityName} saveOrUpdata(${table.entityName} ${table.entityName.toLowerCase()}) {
+        return null;
+    }
+
 }
