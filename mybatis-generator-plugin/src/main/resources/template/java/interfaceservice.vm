@@ -5,11 +5,4 @@ import ${table.modelPackge}.${table.entityName};
 
 public interface I${table.entityName}Service extends GenericService<${table.entityName},String> {
 
-    /**
-    * 保存或者新增
-    * @param ${table.entityName.toLowerCase()}
-    * @return
-    */
-    ${table.entityName} saveOrUpdata(${table.entityName} ${table.entityName.toLowerCase()});
-
 }

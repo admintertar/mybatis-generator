@@ -23,14 +23,4 @@ public class ${table.entityName}ServiceImpl extends GenericServiceImpl<${table.e
     @Resource
     private ${table.entityName}Mapper mapper;
 
-    @Override
-    public GenericDao<${table.entityName}, String> getDao() {
-        return mapper;
-    }
-
-    @Override
-    public ${table.entityName} saveOrUpdata(${table.entityName} ${table.entityName.toLowerCase()}) {
-        return null;
-    }
-
 }
