@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 @Service
 public class ${table.entityName}ServiceImpl extends GenericServiceImpl<${table.entityName}, String> implements I${table.entityName}Service{
 
-    private static final Logger log = Logger.getLogger(${table.entityName}Controller.class);
+    private static final Logger log = Logger.getLogger(${table.entityName}ServiceImpl.class);
 
     @Resource
     private ${table.entityName}Mapper mapper;
