@@ -27,7 +27,7 @@ public class ${table.entityName}ServiceImpl extends GenericServiceImpl<${table.e
     private ${table.entityName}Mapper mapper;
     
     @Override
-    public GenericDao<InOutRegist, String> getDao() {
+    public GenericDao<${table.entityName}, String> getDao() {
         return mapper;
     }
 
