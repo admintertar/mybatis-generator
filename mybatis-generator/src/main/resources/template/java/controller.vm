@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 /*
  *
  * @ClassName ${table.entityName}Controller
- * @Description ${table.remarks}
+ * @Description  ${table.remarks}
  * @Author $!table.get("author")
  * @Date $!table.get("date")
  * @version 1.0.0
