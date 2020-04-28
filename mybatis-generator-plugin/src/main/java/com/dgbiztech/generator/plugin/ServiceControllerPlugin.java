@@ -21,6 +21,13 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.*;
 import java.util.*;
 
+/*
+ * 根据配置文件和模板生成service dao controller  js
+ * @ClassName SelectByIdsPlugin
+ * @author Hongping.Zhong
+ * @Date 2019-04-28 14:27
+ * @version 1.0.0
+ */
 public class ServiceControllerPlugin extends PluginAdapter {
 
     private String projectDir = "";

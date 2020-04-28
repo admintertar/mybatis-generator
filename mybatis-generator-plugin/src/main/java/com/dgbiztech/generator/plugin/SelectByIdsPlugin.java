@@ -12,6 +12,13 @@ import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
 import java.util.List;
 
+/*
+ * 根据ID获取数据的插件
+ * @ClassName SelectByIdsPlugin
+ * @author Hongping.Zhong
+ * @Date 2019-04-28 14:27
+ * @version 1.0.0
+ */
 public class SelectByIdsPlugin extends PluginAdapter {
 
     private final static String SELECT_BY_IDS = "selectByIds";

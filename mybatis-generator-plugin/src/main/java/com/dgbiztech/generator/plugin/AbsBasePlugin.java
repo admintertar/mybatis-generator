@@ -9,7 +9,7 @@ import org.mybatis.generator.api.dom.xml.Document;
 import java.util.List;
 
 /*
- *
+ * 插件扩展的抽象类，为了让插件开发更加的简便
  * @ClassName AbsBasePlugin
  * @author Hongping.Zhong
  * @Date 2019-02-15 14:27

@@ -9,6 +9,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+/*
+ * 注释插件，为了给类/属性映射数据库的注释
+ * @ClassName CommentGenerator
+ * @author Hongping.Zhong
+ * @Date 2020-02-15 14:27
+ * @version 1.0.0
+ */
 public class CommentGenerator extends EmptyCommentGenerator {
 
     private Properties properties;

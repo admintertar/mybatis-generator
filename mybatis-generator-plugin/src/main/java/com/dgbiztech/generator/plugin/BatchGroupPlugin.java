@@ -10,6 +10,13 @@ import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
 import java.util.List;
 
+/*
+ * 批量增删改的插件
+ * @ClassName BatchGroupPlugin
+ * @author Hongping.Zhong
+ * @Date 2019-04-28 14:27
+ * @version 1.0.0
+ */
 public class BatchGroupPlugin extends PluginAdapter {
 
     private final static String BATCH_DELETE = "batchDelete";
